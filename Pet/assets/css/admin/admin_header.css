@@ -1,0 +1,255 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #4f46e5;
+    --dark-bg: #1e293b;
+    --light-bg: #f8fafc;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --card-bg: #ffffff;
+    --border-radius: 10px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--light-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Layout Container */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background: var(--dark-bg);
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: var(--transition);
+    z-index: 1000;
+    transform: translateX(0); /* default sa desktop */
+    overflow-y: auto; /* allow vertical scrolling */
+    scrollbar-width: thin; /* Firefox: make scrollbar thinner */
+}
+
+/* Optional: custom scrollbar for Webkit browsers */
+.admin-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background-color: #4f46e5;
+    border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #cbd5e1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #334155;
+    color: #fff;
+}
+
+.nav-link i {
+    width: 24px;
+    text-align: center;
+}
+
+/* Sidebar Overlay (Mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 900;
+    opacity: 0;
+    transition: var(--transition);
+}
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Toggle Button (Mobile) */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 1100;
+    transition: var(--transition);
+}
+.sidebar-toggle:hover {
+    background: var(--secondary-color);
+}
+
+/* Main Content */
+.admin-main {
+    margin-left: 280px;
+    flex: 1;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+
+
+/* Responsive Tweaks */
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 240px;
+    }
+    .admin-main {
+        margin-left: 240px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    .admin-main {
+        margin-left: 0; /* walang sidebar spacing */
+    }
+
+    /* Sidebar hidden by default, slide in when active */
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* Overlay (pang-close background) */
+    .sidebar-overlay {
+        display: none;
+        background: rgba(0,0,0,0.6);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 900;
+    }
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    /* Toggle button visible only on mobile */
+    .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 0.8rem;
+        cursor: pointer;
+        font-size: 1.2rem;
+        z-index: 1100;
+        transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+        background: var(--secondary-color);
+    }
+}
+
+/* Desktop: hide toggle + overlay */
+@media (min-width: 769px) {
+    .toggle-btn,
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    .admin-sidebar {
+        transform: none !important; /* sidebar always visible */
+    }
+}
+
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-box {
+        width: 100%;
+    }
+}

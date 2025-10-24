@@ -1,0 +1,98 @@
+body { 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background: #f5f5f5; 
+}
+
+/* ===== Admin Main Layout ===== */
+.admin-main { 
+    display: flex; 
+    gap: 20px; 
+    padding: 20px; 
+    align-items: flex-start; /* aligns top of calendar and form */
+}
+
+/* ===== Calendar Container ===== */
+.calendar-container { 
+    flex: 2; 
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 600px; /* ensures calendar is tall enough */
+}
+
+/* ===== Add Event Form ===== */
+.add-event-form { 
+    flex: 1; 
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 600px; /* match calendar height */
+    display: flex;
+    flex-direction: column;
+}
+
+.add-event-form h2 { 
+    margin-top: 0; 
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.add-event-form label { 
+    font-weight: 600; 
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.add-event-form input, 
+.add-event-form textarea { 
+    width: 100%; 
+    padding: 8px; 
+    margin: 5px 0 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ===== Buttons ===== */
+.add-event-form button { 
+    padding: 10px 15px; 
+    background: #6366f1; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.add-event-form button:hover {
+    background: #4f46e5;
+}
+
+.add-event-form button.delete-btn { 
+    background: #e74c3c; 
+}
+
+.add-event-form button.update-btn { 
+    background: #f39c12; 
+}
+
+/* ===== Flash Message ===== */
+.msg { 
+    padding: 10px; 
+    background: #d1ffd1; 
+    border-radius: 5px; 
+    margin-bottom: 15px; 
+    color: #333; 
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 992px) {
+    .admin-main { flex-direction: column; }
+    .calendar-container, .add-event-form { width: 100%; min-height: auto; }
+}

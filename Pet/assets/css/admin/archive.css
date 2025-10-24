@@ -1,0 +1,152 @@
+/* Archive Page Styling */
+.admin-main h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.admin-main section {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Section Titles */
+.admin-main section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Tables */
+.admin-main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    overflow-x: auto;
+}
+
+.admin-main th,
+.admin-main td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    vertical-align: middle;   /* ✅ lahat pantay */
+    height: 50px;             /* ✅ uniform row height */
+}
+
+.admin-main th {
+    background: var(--primary-color);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.admin-main tr:hover {
+    background: #f1f5f9;
+}
+
+/* Actions Cell */
+.actions-cell {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    height: 100%; /* ✅ laging pantay sa row */
+}
+
+/* Action Buttons */
+a.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    height: 32px; /* ✅ consistent button height */
+}
+
+a.action-btn.restore {
+    background-color: #10b981;
+}
+
+a.action-btn.restore:hover {
+    background-color: #059669;
+}
+
+a.action-btn.delete {
+    background-color: #ef4444;
+}
+
+a.action-btn.delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.status-badge.delivered {
+    background-color: #2ecc71;
+}
+
+.status-badge.cancelled {
+    background-color: #e74c3c;
+}
+
+/* Tabs */
+.archive-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #ddd;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tab-btn.active {
+    background: #4f46e5;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Responsive Scroll */
+@media (max-width: 768px) {
+    .admin-main table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

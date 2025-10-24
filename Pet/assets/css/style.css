@@ -1,0 +1,611 @@
+/* ================================
+   GOOGLE FONTS
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+/* ================================
+   ROOT VARIABLES
+================================ */
+:root {
+    --carrot-color: #e67e22;
+    --black: #130f40;
+    --white: #fff;
+    --light-color: #666;
+    --light-bg: #eee;
+    --border: 0.2rem solid #130f40;
+    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes fadeIn {
+    0% { transform: translateY(-10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ================================
+   HOME SECTION
+================================ */
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: url('./../images/dog-copyspace.jpg') no-repeat center/cover;
+    position: relative;
+}
+
+.home .content {
+    position: relative;
+    z-index: 2;
+}
+
+.home .content h3 {
+    font-size: 6rem;
+    color: var(--white);
+    padding-bottom: 1rem;
+}
+
+.home .content h3 span {
+    color: var(--carrot-color);
+}
+
+.home .content .btn {
+    color: var(--white);
+    border-color: var(--white);
+    transition: all 0.3s;
+}
+
+.home .content .btn:hover {
+    color: var(--black);
+}
+
+.home .content .btn::before {
+    background: var(--white);
+}
+
+.home .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.home .wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: translateY(5%);
+}
+
+/* ================================
+   ABOUT SECTION
+================================ */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about .image,
+.about .content {
+    flex: 1 1 40rem;
+}
+
+.about .image img {
+    width: 100%;
+}
+
+.about .content h3 {
+    font-size: 4rem;
+    color: var(--black);
+}
+
+.about .content h3 span {
+    color: var(--carrot-color);
+}
+
+.about .content p {
+    font-size: 1.6rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+    line-height: 2;
+}
+
+/* ================================
+   DOG & CAT FOOD
+================================ */
+.dog-food,
+.cat-food {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.dog-food .image,
+.cat-food .image,
+.dog-food .content,
+.cat-food .content {
+    flex: 1 1 40rem;
+}
+
+.dog-food .image img,
+.cat-food .image img {
+    width: 100%;
+}
+
+.dog-food .content,
+.cat-food .content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.dog-food .content h3,
+.cat-food .content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+}
+
+.dog-food .content h3 span,
+.cat-food .content h3 span {
+    color: var(--carrot-color);
+}
+
+.dog-food .content p,
+.cat-food .content p {
+    font-size: 1.5rem;
+    color: var(--light-color);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.dog-food .content .amount,
+.cat-food .content .amount {
+    font-size: 3.5rem;
+    color: var(--black);
+    padding: .5rem 0;
+}
+
+.dog-food .content a img,
+.cat-food .content a img {
+    height: 15rem;
+    margin-top: 1rem;
+    transition: transform 0.3s;
+}
+
+.dog-food .content a:hover img,
+.cat-food .content a:hover img {
+    transform: rotate(15deg);
+}
+
+.cat-food {
+    flex-wrap: wrap-reverse;
+}
+
+
+
+/* ================================
+   SHOP SECTION
+================================ */
+.shop {
+  text-align: center;
+  margin: 10rem auto 0;
+  padding: 2rem;
+  max-width: 1300px;
+  overflow: visible;
+}
+
+.shop .heading {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+  color: var(--black);
+}
+.shop .heading span {
+  color: var(--carrot-color);
+}
+
+/* --- PRODUCT GRID --- */
+.shop .box-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  justify-items: center;
+}
+
+/* --- PRODUCT CARD --- */
+.shop .box {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.shop .box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* --- PRODUCT IMAGE --- */
+.shop .box img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.shop .box:hover img {
+  transform: scale(1.05);
+}
+
+/* --- PRODUCT CONTENT --- */
+.shop .box h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2rem;
+  color: var(--black);
+}
+.shop .box p {
+  font-size: 1.5rem;
+  color: #555;
+  min-height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+}
+
+.shop .amount {
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: var(--carrot-color);
+}
+
+/* --- ORDER BUTTON --- */
+.shop .order-btn {
+  background: var(--carrot-color);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.shop .order-btn:hover {
+  background: #cf6a1a;
+}
+
+/* --- PRODUCT ICONS --- */
+.shop .icons {
+  position: absolute;
+  top: 6rem;
+  right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 10;
+}
+.shop .icons a {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  font-size: 2rem;
+  background: #fff;
+  color: var(--black);
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.shop .icons a:hover {
+  color: #fff;
+  background: var(--carrot-color);
+}
+
+/* --- SALE & FAVORITE RIBBONS --- */
+.sale-ribbon {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  background: #e60000;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  transform: rotate(-10deg);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.favorite-ribbon {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background: orange;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transform: rotate(10deg) scale(1);
+  transition: all 0.2s ease-in-out;
+}
+.favorite-ribbon.hide {
+  transform: rotate(10deg) scale(0);
+  opacity: 0;
+}
+
+/* Centered top badge for Best Product */
+.badge-best-top {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff7f50, #ff6347); /* gradient for depth */
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    text-transform: uppercase;
+    z-index: 10;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover effect */
+.badge-best-top:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+/* --- PRICES --- */
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 5px;
+  font-size: 14px;
+}
+.sale-price {
+  color: #e63946;
+  font-weight: bold;
+  font-size: 16px;
+}
+/* --- ORDER BUTTON --- */
+.shop .order-btn {
+  background: var(--carrot-color);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.shop .order-btn:hover {
+  background: #cf6a1a;
+}
+/* ================================
+   SERVICES SECTION
+================================ */
+.services .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.services .box {
+    background: var(--light-bg);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%;
+    transition: border-radius 0.3s;
+}
+
+.services .box:nth-child(even) {
+    border-radius: 79% 21% 81% 19% / 58% 93% 7% 42%;
+}
+
+.services .box:hover {
+    border-radius: .5rem;
+}
+
+.services .box i {
+    display: inline-block;
+    height: 6.5rem;
+    width: 6.5rem;
+    line-height: 6.5rem;
+    font-size: 3rem;
+    color: var(--white);
+    background: var(--carrot-color);
+    border-radius: 50%;
+    margin-bottom: .5rem;
+}
+
+.services .box h3 {
+    font-size: 2.2rem;
+    color: var(--black);
+    padding: 1rem 0;
+}
+
+/* ================================
+   CONTACT SECTION
+================================ */
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 2rem 0;
+}
+
+.contact .image,
+.contact form {
+    flex: 1 1 40rem;
+}
+
+.contact .image img {
+    width: 100%;
+}
+
+.contact form {
+    padding: 2rem 7%;
+}
+
+.contact form h3 {
+    font-size: 3rem;
+    padding-bottom: 1rem;
+    color: var(--black);
+}
+
+.contact form .box,
+.contact form textarea {
+    width: 100%;
+    font-size: 1.6rem;
+    color: var(--black);
+    padding: 1.5rem 0;
+    margin: 1rem 0;
+    border-bottom: var(--border);
+    border-width: 0.1rem;
+    text-transform: none;
+}
+
+.contact form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+.contact form .btn {
+    display: block;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* ================================
+   FOOTER
+================================ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 20px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer .footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+.footer .footer-brand .logo {
+    display: inline-block;
+    font-size: 2.2rem;
+    color: var(--carrot-color);
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.footer .footer-brand p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer .footer-top h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--carrot-color);
+    margin-bottom: 15px;
+}
+
+.footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer .footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer .footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer .footer-links ul li a:hover {
+    color: var(--carrot-color);
+    padding-left: 5px;
+}
+
+.footer .footer-contact p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.footer .footer-contact i {
+    color: var(--carrot-color);
+    margin-right: 8px;
+}
+
+.footer .footer-socials .btn1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    color: var(--white);
+    background: #444;
+    border-radius: 50%;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.footer .footer-socials .btn1:hover {
+    background: var(--white);
+    color: var(--carrot-color);
+    transform: translateY(-3px);
+}
+
+.footer .footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .footer-bottom p {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.footer .footer-bottom span {
+    font-weight: 600;
+    color: var(--carrot-color);
+}

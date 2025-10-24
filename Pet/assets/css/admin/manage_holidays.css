@@ -1,0 +1,611 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #4f46e5;
+    --dark-bg: #1e293b;
+    --light-bg: #f8fafc;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --card-bg: #ffffff;
+    --border-radius: 10px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--light-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Layout Container */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 280px;
+    background: var(--dark-bg);
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: var(--transition);
+    z-index: 1000;
+    transform: translateX(0); /* default sa desktop */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #cbd5e1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #334155;
+    color: #fff;
+}
+
+.nav-link i {
+    width: 24px;
+    text-align: center;
+}
+
+/* Sidebar Overlay (Mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 900;
+    opacity: 0;
+    transition: var(--transition);
+}
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Toggle Button (Mobile) */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 1100;
+    transition: var(--transition);
+}
+.sidebar-toggle:hover {
+    background: var(--secondary-color);
+}
+
+/* Main Content */
+.admin-main {
+    margin-left: 280px;
+    flex: 1;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+
+
+
+
+
+
+
+/* === MODALS === */
+.modal {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; /* <-- keep flex for centering */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  /* hidden by default */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none; /* prevents click when hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto; /* clickable again */
+}
+
+/* Modal box */
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+/* Position close button sa top-right */
+.modal-content .close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.modal-content .close:hover {
+  color: #000;
+}
+
+/* === FORM FIELDS === */
+.input-field {
+  margin-bottom: 15px;
+}
+.input-field p {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+.input-field input,
+.input-field textarea,
+.input-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  transition: border 0.2s ease;
+}
+.input-field input:focus,
+.input-field textarea:focus,
+.input-field select:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+/* Modal buttons */
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  background: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.modal-content button:hover { background: #4338ca; }
+
+/* Animations */
+@keyframes slideUp {
+  from {transform: translateY(40px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+/* ===== MAIN WRAPPER ===== */
+.admin-main {
+  padding: 20px;
+  background: #f5f7fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.header-row {
+  display: flex;
+  justify-content: center; /* center h1 */
+  align-items: center;
+  position: relative; /* needed for absolute toggle */
+  margin-bottom: 20px;
+}
+
+.header-row h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+
+}
+
+.btn-primary { background: #4f46e5; color: #fff; }
+.btn-primary:hover { background: #4338ca; }
+.btn-danger { background: #ef4444; color: #fff; }
+.btn-danger:hover { background: #dc2626; }
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between; /* h2 left, button right */
+    align-items: center;            /* vertical center */
+    margin-bottom: 15px;            /* spacing sa table */
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+
+
+/* Table */
+.table-container { width: 100%; overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+thead {
+  background: #f1f5f9;
+  text-align: left;
+}
+thead th {
+  padding: 12px;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+}
+tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+tbody tr:hover { background: #f9fafb; }
+tbody td {
+  padding: 12px;
+  vertical-align: middle;
+  color: #4b5563;
+}
+.actions button { margin: 0 5px; }
+
+/* Limit description text sa table */
+td.description {
+  max-width: 200px;        /* adjust depende sa gusto mong lapad */
+  white-space: nowrap;     /* hindi mag-wrap sa next line */
+  overflow: hidden;        /* itago ang sobra */
+  text-overflow: ellipsis; /* ipakita ang ... kung sobra ang text */
+}
+
+/* Optional: tooltip para makita ang buong description kapag hover */
+
+td.description:hover::after {
+  content: attr(data-full);
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: normal;
+  z-index: 1000;
+}
+
+
+td.actions {
+  display: flex;
+  justify-content: flex-end; /* right-align buttons */
+  gap: 5px; /* space between buttons */
+  white-space: nowrap; /* prevent wrapping */
+}
+
+th.actions {
+  text-align: center;
+  width: 150px;  
+}
+
+
+
+/* Images */
+.service-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+}
+
+/* === RESPONSIVE === */
+
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 240px;
+    }
+    .admin-main {
+        margin-left: 240px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .admin-main {
+      margin-left: 0; /* walang sidebar spacing */
+  }
+
+  /* Sidebar hidden by default, slide in when active */
+  .admin-sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+  }
+  .admin-sidebar.active {
+      transform: translateX(0);
+  }
+
+  /* Overlay (pang-close background) */
+  .sidebar-overlay {
+      display: none;
+      background: rgba(0,0,0,0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 900;
+  }
+  .sidebar-overlay.active {
+      display: block;
+  }
+
+  /* Toggle button visible only on mobile */
+  .toggle-btn {
+      display: block;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 1100;
+      transition: all 0.3s ease;
+  }
+
+  .toggle-btn:hover {
+      background: var(--secondary-color);
+  }
+
+  .header-row h1 { font-size: 22px; }
+  table { font-size: 13px; }
+  .service-img { width: 50px; height: 50px; }
+  .modal-content { max-width: 90%; padding: 15px; }
+  .modal-header h3 { font-size: 18px; }
+  .modal-header .close { font-size: 20px; }
+}
+
+/* Desktop: hide toggle + overlay */
+@media (min-width: 769px) {
+    .toggle-btn,
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    .admin-sidebar {
+        transform: none !important; /* sidebar always visible */
+    }
+}
+
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-box {
+        width: 100%;
+    }
+  .header-row { flex-direction: column; align-items: flex-start; }
+  .header-row h1 { font-size: 20px; }
+
+  /* Table becomes scrollable */
+  table { min-width: 600px; }
+  .modal-content { max-width: 100%; border-radius: 8px; padding: 12px; }
+  .modal-header h3 { font-size: 16px; }
+  .modal-header .close { font-size: 20px; }
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 2000;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Pagination container */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* Pagination buttons */
+.pagination .btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    background: #4f46e5; /* same as btn-primary */
+    transition: background 0.2s ease;
+}
+
+.pagination .btn:hover {
+    background: #4338ca;
+}
+
+/* Active page button */
+.pagination .btn-light {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.pagination .btn-light:hover {
+    background: #d1d5db;
+}
+
+
+/* ✅ Mini alert style */
+.swal2-mini {
+  width: 300px !important;
+  padding: 15px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+}
+.swal2-mini .swal2-title { font-size: 16px !important; }
+.swal2-mini .swal2-html-container { font-size: 13px !important; }
+.swal2-mini .swal2-actions button { padding: 5px 10px !important; font-size: 13px !important; }

@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --carrot-color: #e67e22;
+    --black: #130f40;
+    --white: #fff;
+    --light-color: #666;
+    --light-bg: #eee;
+    --border: 0.2rem solid #130f40;
+    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+
+/* Scrollbar */
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--carrot-color);
+    border-radius: 5rem;
+}
+
+section {
+    padding: 5rem 9%;
+}
+
+.heading {
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--black);
+}
+.heading span {
+    color: var(--carrot-color);
+}
+
+/* Global Button */
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .8rem 2.8rem;
+    border-radius: 5rem;
+    border-top-left-radius: 0;
+    border: var(--border);
+    cursor: pointer;
+    background: none;
+    color: var(--black);
+    font-size: 1.7rem;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--black);
+    z-index: -1;
+    transition: .3s linear;
+    clip-path: circle(0% at 0% 5%);
+}
+.btn:hover::before {
+    clip-path: circle(100%);
+}
+.btn:hover {
+    color: var(--white);
+}
+
+/* Header */
+.header {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(-10rem);
+    transition: 0.4s ease;
+}
+.header { 
+    transform: translateY(0); 
+}
+
+
+.header.active {
+    transform: translateY(0rem);
+}
+.header i {
+    color: var(--carrot-color);
+}
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.7rem;
+    color: var(--light-color);
+}
+.header .navbar a:hover {
+    color: var(--carrot-color);
+}
+.header .icons a,
+.header .icons div {
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+    color: var(--black);
+    cursor: pointer;
+}
+.header .icons a:hover,
+.header .icons div:hover {
+    color: var(--carrot-color);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% { transform: translateY(-1rem); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+
+.header a {
+    font-size: 1.4rem;
+    color: var(--carrot-color);
+}
+.header a:hover {
+    color: var(--black);
+}
+.header .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+    font-weight: bolder;
+}
+
+
+
+/* Auth Buttons in Header */
+.header .auth-buttons {
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.header .auth-buttons .btn {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 5rem;
+    border: 0.2rem solid var(--carrot-color);
+    background: transparent;
+    color: var(--carrot-color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.header .auth-buttons .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--carrot-color);
+    z-index: -1;
+    transition: clip-path 0.4s ease;
+    clip-path: circle(0% at 50% 50%);
+}
+
+.header .auth-buttons .btn:hover::before {
+    clip-path: circle(150% at 50% 50%);
+}
+
+.header .auth-buttons .btn:hover {
+    color: var(--white);
+}
+.auth-buttons {
+    display: none; /* hidden by default */
+    position: absolute;
+    top: 8rem; /* directly under the header */
+    right: 7rem;   /* align with the right edge of user icon */
+    background: #fff;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    flex-direction: row; /* ✅ side by side */
+    gap: 1rem;
+    z-index: 1000;
+    align-items: center;
+}
+
+.auth-buttons.active {
+    display: flex; /* show when active */
+    animation: fadeIn .3s ease;
+}
+
+.auth-buttons .btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    border-radius: 5rem;
+    border: 0.2rem solid var(--carrot-color);
+    background: transparent;
+    color: var(--carrot-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background: var(--carrot-color);
+    color: #fff;
+}
+
+/* Small fade-in animation */
+@keyframes fadeIn {
+    0% { transform: translateY(-10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transform: translateX(-10px); /* slight adjust left */
+}
+
+.dropdown a{
+    color: var(--black);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 12px;
+    background: #fff;
+    border-radius: 10px;
+    min-width: 160px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn .25s ease;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown ,
+.dropdown-content a i {
+    font-size: 1.8rem;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background: var(--light-bg);
+    color: var(--carrot-color);
+}
+
+.dropdown-content a:hover i {
+    color: var(--black);
+}
+
+/* Show Dropdown when Active */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+/* Small Fade-in Animation */
+@keyframes fadeIn {
+    from { transform: translateY(-8px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+#menu-btn {
+  display: none; /* hide sa desktop */
+}
+
+/* end of head */
+
+/* Media Queries */
+@media (max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+
+    .header {
+        padding: 2px;
+    }
+
+    section {
+        padding: 5rem 2rem;
+    }
+
+    .home {
+        justify-content: center;
+        background-position: right;
+    }
+
+    .home .content {
+        text-align: center;
+        padding-bottom: 5rem;
+    }
+
+    .home .content h3 {
+        font-size: 4.5rem;
+    }
+
+    .home .wave {
+        aspect-ratio: 991 / 220; /* mas proportion sa tablet */
+    }
+
+    .shop .box-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width:700px) {
+    .header .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--white);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path .3s ease;
+    }
+
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 2rem;
+        font-size: 2rem;
+        color: var(--black);
+    }
+
+    .home .wave {
+        aspect-ratio: 900 / 220; /* mobile proportion */
+    }
+
+    #menu-btn {
+        display: inline-block;
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: var(--carrot-color);
+    }
+
+    .shop .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:440px) {
+    html {
+        font-size: 50%;
+    }
+
+    .home .wave {
+        aspect-ratio: 900 / 220; /* extra small */
+    }
+
+    .header .login-form {
+        width: 90%;
+    }
+
+    .shop .box-container {
+        grid-template-columns: 1fr;
+    }
+}

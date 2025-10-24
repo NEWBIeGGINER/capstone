@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --carrot-color: #e67e22;
+    --black: #130f40;
+    --white: #fff;
+    --light-color: #666;
+    --light-bg: #eee;
+    --border: 0.2rem solid #130f40;
+    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% { transform: translateY(-1rem); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Background ng Sign In Page */
+.signin-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff; /* carrot solid */
+    padding: 2rem;
+}
+
+
+
+/* Box Styling */
+.signin-box {
+    background: var(--white);
+    color: #FFF;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    padding: 4rem 5rem;
+    width: 100%;
+    max-width: 60rem; /* mas malaki */
+    text-align: center;
+    animation: fadeIn .6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Title */
+.signin-box h3 {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* Input Fields */
+.signin-box .input-field {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.signin-box .input-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.signin-box .input-field input {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: var(--border);
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    background: var(--light-bg);
+    position: relative;   /* ✅ para hindi matabunan */
+    z-index: 1;           /* ✅ palaging nasa ibabaw */
+}
+
+
+.signin-box .input-field input:focus {
+    border-color: var(--carrot-color);
+    background: #fff;
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+}
+
+/* Button */
+.signin-box .btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    border-radius: 0.8rem;
+    background: var(--carrot-color);
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.signin-box .btn:hover {
+    background: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Link Section */
+.signin-box .link {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.signin-box .link a {
+    color: var(--carrot-color);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.signin-box .link a:hover {
+    color: var(--black);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--carrot-color);
+}
